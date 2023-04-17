@@ -14,7 +14,7 @@ export const GifApp = () => {
   return (
     <div className="container">
       <h1>GifApp</h1>
-      <AddCategory onNewCategory={(value) => onAddNewCategory(value)} />
+      <AddCategory onNewCategory={onAddNewCategory} />
       {categories.map((category) => (
         <GifGrid key={category} category={category} />
       ))}
