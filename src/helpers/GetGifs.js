@@ -8,6 +8,5 @@ export const getGifs = async (category) => {
     title: img.title,
     url: img.images.downsized_medium.url,
   }));
-  console.log(gif);
   return gif;
 };

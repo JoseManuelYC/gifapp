@@ -3,19 +3,20 @@ import { getGifs } from "../helpers/GetGifs";
 
 export const useGifFetch = (category) => {
   const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const getImages = async () => {
+    const newImage = await getGifs(category);
+    setImages(newImage);
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      (async () => {
-        const newImage = await getGifs(category);
-        setImages(newImage);
-      })();
-    }, 2000);
-
-    return () => clearTimeout(timeout);
+    getImages();
   }, []);
 
   return {
     images,
+    isLoading,
   };
 };
